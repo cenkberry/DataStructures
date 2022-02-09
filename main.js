@@ -10,6 +10,7 @@ class LinkedList {
     constructor() {
         this.head = null;
         this.tail = null;
+        this.size = 0;
     }
 
     append(value) {
@@ -23,6 +24,7 @@ class LinkedList {
             this.tail = new Node(value);
             this.tail.prev = oldtail;
         }
+        this.size++;
     };
 
     prepend(value) {
@@ -37,6 +39,7 @@ class LinkedList {
             oldhead.prev = this.head;
             this.head.next = oldhead;
         }
+        this.size++;
     };
 
     deleteHead() {
@@ -53,6 +56,7 @@ class LinkedList {
                 this.head.prev = null;
             }
         }
+        this.size--;
     };
 
     deleteTail() {
@@ -68,8 +72,9 @@ class LinkedList {
                 this.tail = removeTail.prev;
                 this.tail.next = null;
             }
-            return removeTail.value;
+            
         }
+        this.size--;
     };
 
     search(value){
@@ -83,6 +88,15 @@ class LinkedList {
         }
         return null;
     }
+    getHead() {
+        return this.head;
+    }
+    getTail(){
+        return this.tail;
+    }
+    getSize(){
+        return this.size;
+    }   
 }
 
 const list = new LinkedList();
@@ -93,9 +107,12 @@ list.append(3);
 list.append(4);
 list.append(5);
 list.append(6);
-list.prepend("A");
+list.prepend(-1);
+
 list.deleteHead();
 list.deleteTail();
-console.table(list);
+console.log(list);
 
-
+console.log(list.getHead());
+console.log(list.getTail());
+console.log(list.getSize());
