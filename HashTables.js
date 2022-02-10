@@ -1,6 +1,5 @@
 const hash = (key, max) => {
     let hashed = 0;
-
     for (let i = 0; i < key.length; i++) {
         hashed += key.charCodeAt(i);
     }
@@ -17,35 +16,62 @@ class HashTable {
         console.log(this.storage);
     };
 
-    add(key,value) {
+    add(key, value) {
 
-        var index = hash(key, this.sLimit);
+        let index = hash(key, this.sLimit); //create index 
+
+        //if that index didn't created
         if (this.storage[index] === undefined) {
-            this.storage[index] = [[key, value]];
-        } 
-        else 
-        {
-           var inserted = false;
-            for (var i = 0; i < this.storage[index].length; i++) {
+            this.storage[index] = [
+                [key, value]
+            ];
+
+        } else {
+            let inserted = false;
+            //if it is in that index,you finding the place in index and changing the value:
+            for (let i = 0; i < this.storage[index].length; i++) {
                 if (this.storage[index][i][0] === key) {
                     this.storage[index][i][1] = value;
                     inserted = true;
                 }
-
+                //if there is an index,but didnt created the key:
                 if (inserted === false) {
                     this.storage[index].push([key, value]);
                 }
             }
         }
+    };
 
+    remove(key) {
+        let index = hash(key, this.sLimit); //create index var.
+        let indexlength = this.storage[index].length; //create index.length
+
+        //if there is an index and one key at inside
+        if (indexlength === 1 && this.storage[index][0][0] === key)
+        {
+            delete this.storage[index];
+        }
+        else
+        {
+            //Create a loop to find the place of key and delete it
+            for (let i = 0; i < this.storage[index]; i++) {
+                if (this.storage[index][i][0] === key) {
+                    delete this.storage[index][i];
+                } else {
+                    return undefined;
+                }
+            }
+
+        }
     };
 };
 
-let xxx = new HashTable();
-xxx.add("cenk" , "05319231902");
-xxx.add("rana" , "05456407620");
-xxx.add("cemil1" , "05456407611");
-xxx.add("cemil2" , "05456407612");
-xxx.add("cemil3" , "05456407613");
-xxx.add("cemil1" , "05456407619");
+const xxx = new HashTable();
+xxx.add("cenkberry", "05456407488");
+xxx.add("ranaberry", "05456407519");
+xxx.add("johnsmith", "05456407955");
+xxx.add("gallardoesteban", "05456407122");
+xxx.add("ranaberry", "05456407522");
+
+xxx.remove("johnsmith");
 xxx.print();
