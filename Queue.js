@@ -1,4 +1,4 @@
-class Stack{
+class Queue{
     constructor(){
         this.arrs = [];
     };
@@ -7,13 +7,13 @@ class Stack{
         return console.log(this.arrs);
     }
 
-    push(item){
+    enqueue(item){
         this.arrs.push(item);
     };
 
-    pop(){
-        console.log(`${this.arrs[this.arrs.length-1]} is deleted from array`);
-        this.arrs.pop();
+    dequeue(){
+        console.log( `${this.arrs[0]} is deleted from array` );
+         return this.arrs.shift();
     };
 
     peek(){
@@ -21,13 +21,13 @@ class Stack{
             return console.log("This array is empty");
         }
         else{
-            return console.log(`Last stack is: ${this.arrs[this.arrs.length-1]}`);
+            return console.log(`First Element is: ${this.arrs[0]}`);
         }
     };
 
     getSize(){
          return console.log(`Array length is: ${this.arrs.length}`);
-    }
+    };
 
     isEmpty(){
         if(this.arrs.length > 0){
@@ -37,18 +37,15 @@ class Stack{
         {
             return console.log("This array is empty");
         }
-    }
+    };
 };
 
-const myarr = new Stack();
-myarr.push("Cat");
-myarr.push("Dog");
-myarr.push("Snake");
-myarr.push("Penguin");
-myarr.push("Bird");
-myarr.push("Penguin");
-myarr.pop();
+const myarr = new Queue();
+
+myarr.enqueue("Dog");
+myarr.enqueue("Cat");
+myarr.enqueue("Snake");
+myarr.dequeue();
 myarr.peek();
-myarr.getSize();
 myarr.isEmpty();
 myarr.print();
