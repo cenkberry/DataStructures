@@ -2,7 +2,7 @@ class PriorityQueue{
     constructor(){
         this.myArr = [];
     };
-
+    
     print(){
         return console.log(this.myArr);
     }
@@ -34,7 +34,6 @@ class PriorityQueue{
     };
 
     enqueue(item){
-        
             var added = false;
 
             for(let i = 0 ; i<this.myArr.length;i++)
@@ -49,7 +48,6 @@ class PriorityQueue{
                 this.myArr.push(item);
             }
     };
-    
 };
 
 const myarr = new PriorityQueue();
