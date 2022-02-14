@@ -49,3 +49,4 @@ console.log(myMap.arr);                // {Leader: 'cenkberry', Asisstant: 'rana
 
 myMap.clear();                         //  all array is cleared.
 console.log(myMap.arr);                //  [] ---> empty array
+
